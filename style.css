@@ -1074,3 +1074,116 @@ button:focus-visible,
     .connect-layout-grid, .chips-layout-matrix { grid-template-columns: 1fr; }
     .matrix-span-full { grid-column: span 1; }
 }
+
+
+/* ==========================================================================
+   MY JOURNEY CUSTOM REFINEMENTS & REWRITTEN CLASSES
+   ========================================================================== */
+
+/* Hero Section Customizations */
+.hero-section-custom {
+    text-align: center; 
+    padding: 60px 0; 
+    border-bottom: 1px solid var(--color-border);
+}
+.hero-story-custom {
+    margin-bottom: 0; 
+    text-align: left;
+}
+
+/* What I Stand For: 3 + 2 Grid Layout & Row Centering */
+.stand-for-layout {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+.stand-for-layout .stand-card {
+    grid-column: span 2;
+}
+.stand-for-layout .row-2-card:nth-of-type(4) {
+    grid-column: 2 / span 2; /* Offsets the 4th card to center the bottom row */
+}
+.stand-for-layout .row-2-card:nth-of-type(5) {
+    grid-column: 4 / span 2;
+}
+
+/* Timeline Cards Padding */
+.padding-card {
+    padding: 24px;
+}
+
+/* Continuous Learning & Certifications Headers/Descriptions */
+.learning-intro {
+    max-width: 750px; 
+    margin: -20px auto 40px auto; 
+    color: var(--color-text-muted); 
+    font-size: 1.05rem;
+}
+.cert-title {
+    font-size: 1.2rem; 
+    margin-bottom: 4px;
+}
+.cert-institution {
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    color: var(--color-navy); 
+    margin-bottom: 10px;
+}
+.cert-description {
+    font-size: 0.92rem; 
+    color: var(--color-text-muted); 
+    margin-bottom: 0;
+}
+
+/* Matrix Tag Chips Layouts */
+.chip-detailed {
+    margin: 0; 
+    padding: 12px 20px; 
+    background-color: var(--color-bg); 
+    border: 1px solid var(--color-border); 
+    text-align: center; 
+    border-radius: var(--radius-md); 
+    min-width: 240px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    gap: 2px;
+}
+.chip-centered {
+    margin: 0; 
+    padding: 12px 20px; 
+    background-color: var(--color-bg); 
+    border: 1px solid var(--color-border); 
+    text-align: center; 
+    border-radius: var(--radius-md); 
+    min-width: 240px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Responsive Media Queries for the 3 + 2 Grid Layout */
+@media (max-width: 1024px) {
+    .stand-for-layout { 
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    .stand-for-layout .stand-card { 
+        grid-column: span 1 !important; 
+    }
+}
+@media (max-width: 768px) {
+    .stand-for-layout { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .stand-for-layout .stand-card { 
+        grid-column: span 1 !important; 
+    }
+}
+@media (max-width: 480px) {
+    .stand-for-layout { 
+        grid-template-columns: 1fr; 
+    }
+    .stand-for-layout .stand-card { 
+        grid-column: span 1 !important; 
+    }
+}
