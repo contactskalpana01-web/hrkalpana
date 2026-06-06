@@ -1,0 +1,412 @@
+<!-- my-journey.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Timeline specific layout rules using existing design system tokens */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--color-border);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--color-white);
+            border: 3px solid var(--color-purple);
+            top: 26px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left { left: 0; box-sizing: border-box; }
+        .right { left: 50%; box-sizing: border-box; }
+        .right::after { left: -8px; }
+        .timeline-date {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .timeline-company {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .timeline-badge {
+            display: inline-block;
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 12px;
+            text-transform: uppercase;
+        }
+        .placeholder-photo {
+            background-color: var(--color-bg);
+            border: 2px dashed #CBD5E1;
+            border-radius: var(--radius-md);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        .shaped-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 1024px) {
+            .shaped-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 22px; }
+            .right { left: 0; }
+            .shaped-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .shaped-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="my-journey.html" class="active">My Journey</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="text-align: center; padding: 80px 0; border-bottom: 1px solid var(--color-border);">
+        <div class="container" style="max-width: 850px;">
+            <span class="badge">My Journey</span>
+            <h1 style="margin-bottom: 24px;">From aspiring scientist to <span class="text-purple">people leader</span>.</h1>
+            <div class="hero-story" style="margin-bottom: 0; text-align: left;">
+                <p class="lead" style="font-size: 1.35rem; font-weight: 600; text-align: center; color: var(--color-navy); margin-bottom: 32px;">
+                    My journey hasn't followed a straight line, and that's exactly what has made it meaningful.
+                </p>
+                <p>If you had asked 10-year-old Kalpana what she wanted to be, the answer would have been simple: a scientist, an astronaut, or a doctor. An HR professional? Not even close.</p>
+                <p>Growing up in a Hindi-speaking household, I became determined to master English. Books became my teachers. Movies became my classroom. I spent countless hours reading, listening, and repeating pronunciations until they felt natural.</p>
+                <p>Looking back, I didn't realize it then, but I was already building one of the skills that would shape my future: the ability to learn, adapt, and grow in unfamiliar situations.</p>
+                <p>My academic journey began in Biochemistry with dreams of working in healthcare and research. But somewhere along the way, I realized that while I enjoyed understanding systems, I was even more fascinated by understanding people.</p>
+                <p style="font-weight: 600; color: var(--color-purple); text-align: center; font-size: 1.15rem; margin-top: 24px; margin-bottom: 8px;">That realization changed everything.</p>
+                <p style="font-weight: 500; color: var(--color-navy); text-align: center; font-size: 1.1rem; margin-bottom: 24px;">What started as an unexpected career shift eventually became a profession I genuinely love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section" style="background-color: var(--color-white); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="section-title text-center">The Journey So Far</h2>
+            <div class="timeline-container">
+                
+                <!-- 2017 -->
+                <div class="timeline-item left">
+                    <div class="expertise-card" style="padding: 30px;">
+                        <div class="timeline-date">2017</div>
+                        <div class="timeline-company">Discovering HR</div>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">My first exposure to Human Resources came during an internship focused on recruitment and talent management.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">For the first time, I saw how hiring decisions, employee experiences, and workplace culture could directly influence business outcomes.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">I was hooked.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Not because of the processes.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">Because of the impact.</p>
+                    </div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="timeline-item right">
+                    <div class="expertise-card" style="padding: 30px;">
+                        <div class="timeline-date">2018</div>
+                        <div class="timeline-company">Building Without a Blueprint</div>
+                        <p style="font-weight: 500; font-size: 0.9rem; color: var(--color-navy); margin-bottom: 8px;">Zashed Fashiontech</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">My first full-time role was with a startup called Zashed Fashiontech.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Like most startups, things moved fast. Very fast.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Within two months, we scaled from 7 employees to 30 employees.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">There were no established frameworks, no inherited systems, and no perfect roadmap. We were building while moving.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 12px;">I found myself creating hiring processes, onboarding experiences, and employee engagement initiatives from the ground up.</p>
+                        <p style="font-size: 0.95rem; font-weight: 500; color: var(--color-navy); margin-bottom: 4px;">This experience taught me a lesson that still shapes my work today:</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 2px;">Growth needs structure.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 2px;">Culture doesn't happen by accident.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 0;">It is intentionally built.</p>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="timeline-item left">
+                    <div class="expertise-card" style="padding: 30px;">
+                        <div class="timeline-date">2020</div>
+                        <div class="timeline-company">Finding My Feet in a Crisis</div>
+                        <p style="font-weight: 500; font-size: 0.9rem; color: var(--color-navy); margin-bottom: 8px;">OSIM India</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">At OSIM India, I experienced one of the most challenging periods of my career.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Within a short span of time, my reporting managers moved on, and I found myself independently managing the HR function.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Then COVID happened.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">As an essential healthcare services organization, shutting down was not an option. Employees came to work every day despite uncertainty, health concerns, and difficult questions that nobody had answers to.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 4px;">I learned that leadership isn't always about solving every problem.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2px;">Sometimes it's about creating stability when people need it most.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 2px;">Sometimes it's about listening.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Sometimes it's about simply being present.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">This period taught me resilience, empathy, and the importance of clear communication during uncertainty. Most importantly, it taught me that calm leadership can make a meaningful difference in difficult times.</p>
+                        <span class="timeline-badge">COVID Warrior</span>
+                        <div class="placeholder-photo">Recognition Photo Placeholder</div>
+                    </div>
+                </div>
+
+                <!-- 2021 - 2023 -->
+                <div class="timeline-item right">
+                    <div class="expertise-card" style="padding: 30px;">
+                        <div class="timeline-date">2021 – 2023</div>
+                        <div class="timeline-company">Discovering the Power of Data</div>
+                        <p style="font-weight: 500; font-size: 0.9rem; color: var(--color-navy); margin-bottom: 8px;">boodmo.com</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">My time at boodmo.com changed how I viewed HR.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Until then, my work had largely focused on people, culture, and employee experience. At boodmo, I began exploring how data could strengthen those efforts.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 12px;">Talent assessments, workforce insights, engagement trends, hiring effectiveness, and people analytics became powerful tools for understanding employee experiences more deeply.</p>
+                        <p style="font-size: 0.95rem; font-weight: 500; color: var(--color-navy); margin-bottom: 4px;">What I discovered was simple:</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 2px;">Data doesn't replace empathy.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 8px;">It strengthens it.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">The more we understood people through meaningful insights, the better decisions we could make.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">This period shaped my belief that great HR leaders balance both heart and logic.</p>
+                    </div>
+                </div>
+
+                <!-- Today -->
+                <div class="timeline-item left">
+                    <div class="expertise-card" style="padding: 30px;">
+                        <div class="card-accent-line bg-purple"></div>
+                        <div class="timeline-date">Today</div>
+                        <div class="timeline-company">Building Happiness as Infrastructure</div>
+                        <p style="font-weight: 500; font-size: 0.9rem; color: var(--color-navy); margin-bottom: 8px;">The Scalers</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">Today, I work in a fast-growing technology environment where my focus is helping create workplaces where people feel connected, supported, and empowered to grow.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 12px;">I partner with leaders to improve employee experiences, strengthen manager effectiveness, build learning cultures, and create people practices that help organizations scale without losing what makes them unique.</p>
+                        <p style="font-size: 0.95rem; font-weight: 500; color: var(--color-navy); margin-bottom: 4px;">One of the ideas I feel most strongly about is this:</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 2px;">Happiness at work isn't a perk.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-purple); font-weight: 600; margin-bottom: 8px;">It's infrastructure.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 8px;">When people feel valued, trusted, and supported, they perform better, collaborate better, and stay longer.</p>
+                        <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">Creating those environments is some of the most meaningful work I've ever done.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: A Few Things That Shaped Me -->
+    <section class="section" style="background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="section-title text-center">A Few Things That Shaped Me</h2>
+            <div class="shaped-grid">
+                <!-- Card 1 -->
+                <div class="metric-card" style="padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; min-height: 160px;">
+                    <div class="metric-number" style="font-size: 2rem; margin-bottom: 8px;">📚</div>
+                    <div class="metric-label" style="font-size: 1rem; color: var(--color-navy); line-height: 1.4;">Books taught me English.<br><span style="color: var(--color-text-muted); font-size: 0.9rem; font-weight: 400;">And confidence.</span></div>
+                </div>
+                <!-- Card 2 -->
+                <div class="metric-card" style="padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; min-height: 160px;">
+                    <div class="metric-number" style="font-size: 2rem; margin-bottom: 8px; color: var(--color-purple);">⚡</div>
+                    <div class="metric-label" style="font-size: 1rem; color: var(--color-navy); line-height: 1.4;">Startups taught me resilience.<br><span style="color: var(--color-text-muted); font-size: 0.9rem; font-weight: 400;">And how to build while moving.</span></div>
+                </div>
+                <!-- Card 3 -->
+                <div class="metric-card" style="padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; min-height: 160px;">
+                    <div class="metric-number" style="font-size: 2rem; margin-bottom: 8px; color: var(--color-gold);">🛡️</div>
+                    <div class="metric-label" style="font-size: 1rem; color: var(--color-navy); line-height: 1.4;">COVID taught me leadership.<br><span style="color: var(--color-text-muted); font-size: 0.9rem; font-weight: 400;">When certainty wasn't an option.</span></div>
+                </div>
+                <!-- Card 4 -->
+                <div class="metric-card" style="padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; min-height: 160px;">
+                    <div class="metric-number" style="font-size: 2rem; margin-bottom: 8px;">📊</div>
+                    <div class="metric-label" style="font-size: 1rem; color: var(--color-navy); line-height: 1.4;">Data taught me objectivity.<br><span style="color: var(--color-text-muted); font-size: 0.9rem; font-weight: 400;">Without losing empathy.</span></div>
+                </div>
+                <!-- Card 5 -->
+                <div class="metric-card" style="padding: 32px 20px; display: flex; flex-direction: column; justify-content: center; min-height: 160px;">
+                    <div class="metric-number" style="font-size: 2rem; margin-bottom: 8px; color: var(--color-purple);">👥</div>
+                    <div class="metric-label" style="font-size: 1rem; color: var(--color-navy); line-height: 1.4;">People taught me everything else.<br><span style="color: var(--color-text-muted); font-size: 0.9rem; font-weight: 400;">They still do.</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones I'm Proud Of Section -->
+    <section class="section" style="background-color: var(--color-white); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="section-title text-center">Milestones I'm Proud Of</h2>
+            <div class="cases-grid">
+                <!-- Award 1 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-gold);">HR Association of India</div>
+                    <h3 style="font-size: 1.25rem;">Women Achievers of the Year</h3>
+                    <div class="placeholder-photo" style="margin-top: auto;">Award Photo Placeholder</div>
+                </div>
+                <!-- Award 2 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-gold);">HRBP Summit & Awards</div>
+                    <h3 style="font-size: 1.25rem;">Women in HR Excellence</h3>
+                    <div class="placeholder-photo" style="margin-top: auto;">Award Stage Photo Placeholder</div>
+                </div>
+                <!-- Award 3 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-gold);">HR Association of India</div>
+                    <h3 style="font-size: 1.25rem;">30 Under 30 Impactful HR Leader</h3>
+                    <div class="placeholder-photo" style="margin-top: auto;">Award Photo Placeholder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recognition Along The Way Section -->
+    <section class="section" style="background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="section-title text-center">Recognition Along The Way</h2>
+            <div class="beyond-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="interest-card" style="padding: 28px 20px; background-color: var(--color-white);">
+                    <span class="interest-icon" style="font-size: 1.75rem; margin-bottom: 12px;">🌟</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem;">Star Performer of the Month</span>
+                </div>
+                <div class="interest-card" style="padding: 28px 20px; background-color: var(--color-white);">
+                    <span class="interest-icon" style="font-size: 1.75rem; margin-bottom: 12px;">📈</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem;">Progressive Growth Star</span>
+                </div>
+                <div class="interest-card" style="padding: 28px 20px; background-color: var(--color-white);">
+                    <span class="interest-icon" style="font-size: 1.75rem; margin-bottom: 12px;">🛡️</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem;">COVID Warrior</span>
+                </div>
+                <div class="interest-card" style="padding: 28px 20px; background-color: var(--color-white);">
+                    <span class="interest-icon" style="font-size: 1.75rem; margin-bottom: 12px;">⚓</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem;">Calm Under Pressure</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continuous Learning Section -->
+    <section class="section" style="background-color: var(--color-white); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="section-title text-center">Continuous Learning</h2>
+            <p class="section-intro text-center" style="max-width: 750px; margin: -30px auto 50px auto; color: var(--color-text-muted); font-size: 1.1rem;">
+                I believe great HR leaders never stop learning. Alongside hands-on experience, I continue to invest in strengthening my understanding of people, business, analytics, leadership, and organizational development.
+            </p>
+            
+            <!-- Featured Certifications Sub-Grid -->
+            <div class="cases-grid" style="margin-bottom: 40px;">
+                <!-- Card 1 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-purple);">Currently Pursuing</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 4px;">Professional Certificate Programme in HR Management & Analytics</h3>
+                    <div style="font-size: 0.9rem; font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">IIM Kozhikode (IIM-K)</div>
+                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">Currently deepening my expertise in strategic HR, workforce planning, talent management, and people analytics.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-purple);">University of Pennsylvania / Coursera</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">People Analytics</h3>
+                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">Built deeper capability in using data and insights to improve workforce decisions and employee outcomes.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="case-card">
+                    <div class="case-category" style="color: var(--color-purple);">CHRMP</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 12px;">PoSH – Train the Trainer</h3>
+                    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">Certified to facilitate workplace sexual harassment prevention awareness and training programs.</p>
+                </div>
+            </div>
+
+            <!-- Additional Learning Sub-Grid -->
+            <h3 class="text-center" style="font-family: var(--font-heading); color: var(--color-navy); margin-bottom: 24px; font-size: 1.35rem;">Additional Learning & Focus Areas</h3>
+            <div class="beyond-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="interest-card" style="padding: 24px; background-color: var(--color-bg); border-color: var(--color-border);">
+                    <span class="interest-icon" style="font-size: 1.5rem; margin-bottom: 8px;">🚀</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem; font-weight: 600; color: var(--color-navy);">Advancing Your Skills as an HR Business Partner</span>
+                </div>
+                <div class="interest-card" style="padding: 24px; background-color: var(--color-bg); border-color: var(--color-border);">
+                    <span class="interest-icon" style="font-size: 1.5rem; margin-bottom: 8px;">⚙️</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem; font-weight: 600; color: var(--color-navy);">OD Intervention Program</span>
+                </div>
+                <div class="interest-card" style="padding: 24px; background-color: var(--color-bg); border-color: var(--color-border);">
+                    <span class="interest-icon" style="font-size: 1.5rem; margin-bottom: 8px;">💼</span>
+                    <span class="interest-label" style="display: block; font-size: 0.95rem; font-weight: 600; color: var(--color-navy);">Workday Basics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Believe Section -->
+    <section class="section philosophy-section" style="background-color: var(--color-white); border-top: 1px solid var(--color-border);">
+        <div class="container text-center">
+            <div class="philosophy-container">
+                <span class="philosophy-icon">&ldquo;</span>
+                <div class="philosophy-text" style="text-align: left; max-width: 700px; margin: 0 auto;">
+                    <p style="font-size: 1.15rem; color: var(--color-text); margin-bottom: 16px;">Over the years, I've learned that the best workplaces are not built through policies alone.</p>
+                    <p class="highlight" style="font-size: 1.15rem; margin-bottom: 12px;">Through trust.</p>
+                    <p class="highlight" style="font-size: 1.15rem; margin-bottom: 12px;">Through leaders who care.</p>
+                    <p class="highlight" style="font-size: 1.15rem; margin-bottom: 12px;">Through opportunities to learn.</p>
+                    <p class="highlight" style="font-size: 1.15rem; margin-bottom: 12px;">Through meaningful recognition.</p>
+                    <p style="font-size: 1.15rem; color: var(--color-text); margin-bottom: 24px;">Through cultures where people feel safe to contribute, challenge ideas, and grow.</p>
+                    <p style="font-size: 1.15rem; color: var(--color-text); font-weight: 500;">My role as an HR leader is to help create those environments.</p>
+                </div>
+                <p class="philosophy-author" style="font-size: 1.2rem; color: var(--color-purple);">Because when people grow, businesses grow with them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section" style="background-color: var(--color-white); padding-top: 40px;">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Interested in continuing the conversation?</h2>
+                <a href="lets-connect.html" class="btn btn-secondary btn-lg">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

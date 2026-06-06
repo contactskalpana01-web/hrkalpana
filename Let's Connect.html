@@ -1,0 +1,325 @@
+<!-- lets-connect.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Connect | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Portfolio Design System Integrations for Let's Connect Architecture */
+        .connect-hero {
+            padding: 90px 0 60px 0;
+            background-color: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+        }
+        .connect-hero p {
+            max-width: 750px;
+            margin: 16px auto 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+        }
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .connect-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .connect-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-purple);
+            box-shadow: var(--shadow-sm);
+        }
+        .connect-card .card-icon {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+            color: var(--color-purple);
+        }
+        .connect-card h3 {
+            font-size: 1.25rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+        }
+        .connect-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        /* Row 1 Layout: 3 Cards */
+        .connect-card.row-1 {
+            grid-column: span 2;
+        }
+        /* Row 2 Layout: 2 Centered Cards */
+        .connect-card.row-2-first {
+            grid-column: 2 / span 2;
+        }
+        .connect-card.row-2-second {
+            grid-column: 4 / span 2;
+        }
+        .interactive-chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+            justify-content: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .topic-chip {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-navy);
+            transition: all var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .topic-chip:hover {
+            background: var(--color-white);
+            border-color: var(--color-purple);
+            color: var(--color-purple);
+            transform: scale(1.03);
+        }
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .channel-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: all var(--transition-smooth);
+            text-decoration: none !important;
+        }
+        .channel-card:hover {
+            border-color: var(--color-purple);
+            background-color: var(--color-bg);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .channel-card .channel-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .channel-card h3 {
+            font-size: 1.4rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+        }
+        .channel-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+        .channel-card .channel-action {
+            font-weight: 600;
+            color: var(--color-purple);
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap var(--transition-smooth);
+        }
+        .channel-card:hover .channel-action {
+            gap: 12px;
+        }
+        @media (max-width: 992px) {
+            .channels-grid { grid-template-columns: 1fr; gap: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+            .connect-grid { grid-template-columns: 1fr; }
+            .connect-card.row-1, .connect-card.row-2-first, .connect-card.row-2-second { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="my-journey.html">My Journey</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="lets-connect.html" class="active btn btn-secondary" style="color: var(--color-purple) !important;">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="connect-hero">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">Let's Connect</span>
+            <h1 style="margin-top: 16px;">If you've made it this far, thank you.</h1>
+            <p>
+                You've read about my journey, explored the work I'm proud of, and hopefully gained a sense of what drives me as an HR professional. 
+                The best opportunities in my career haven't always come from carefully planned moments. Many have started with a simple conversation, a shared idea, or someone willing to see things from a different perspective. 
+                Perhaps this could be one of those conversations.
+            </p>
+            <p style="font-style: italic; font-size: 1rem; margin-top: 24px; color: var(--color-text-muted);">
+                "HR leader. Curious learner. Occasional bathroom singer."
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 2: What Brings You Here? -->
+    <section class="section" style="background-color: var(--color-white); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2>What Brings You Here?</h2>
+                <p class="text-muted" style="max-width: 550px; margin: 8px auto 0 auto;">Select whatever matches your goal to guide our future conversation.</p>
+            </div>
+
+            <div class="connect-grid">
+                <!-- Card 1 (Row 1) -->
+                <div class="connect-card row-1">
+                    <div class="card-icon">💼</div>
+                    <h3>Looking for an HR Business Partner?</h3>
+                    <p>Let's talk about culture, employee experience, leadership development, and people strategy.</p>
+                </div>
+                <!-- Card 2 (Row 1) -->
+                <div class="connect-card row-1">
+                    <div class="card-icon">🌱</div>
+                    <h3>Building Better Workplaces?</h3>
+                    <p>I'd love to exchange ideas on engagement, learning, capability building, and creating environments where people can do their best work.</p>
+                </div>
+                <!-- Card 3 (Row 1) -->
+                <div class="connect-card row-1">
+                    <div class="card-icon">🔍</div>
+                    <h3>Exploring New Perspectives?</h3>
+                    <p>Whether it's workplace culture, leadership challenges, people practices, or lessons learned along the way, I'm always interested in hearing different viewpoints.</p>
+                </div>
+                <!-- Card 4 (Row 2 Centered) -->
+                <div class="connect-card row-2-first">
+                    <div class="card-icon">🤝</div>
+                    <h3>Speaking, Collaboration, or Community?</h3>
+                    <p>I'm always open to conversations that help people learn, grow, and connect.</p>
+                </div>
+                <!-- Card 5 (Row 2 Centered) -->
+                <div class="connect-card row-2-second">
+                    <div class="card-icon">✨</div>
+                    <h3>Just Saying Hello?</h3>
+                    <p>That's welcome too. Not every conversation needs an agenda. Sometimes the most interesting ones start unexpectedly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: A Few Things We Could Talk About -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h2>A Few Things We Could Talk About</h2>
+            <p class="text-muted" style="max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">
+                Some conversations stay focused on people, culture, and leadership.<br><br>
+                Others eventually drift toward travel stories, books, K-dramas, or stand-up comedy.<br><br>
+                I'm equally happy with both.
+            </p>
+            
+            <div class="interactive-chip-grid" style="margin-top: 32px;">
+                <span class="topic-chip">🏢 Employee Experience</span>
+                <span class="topic-chip">🎯 Leadership Development</span>
+                <span class="topic-chip">🎨 Culture Building</span>
+                <span class="topic-chip">📚 Learning & Capability</span>
+                <span class="topic-chip">🤝 People Partnerships</span>
+                <span class="topic-chip">🚀 Future of Work</span>
+                <span class="topic-chip">✈️ Travel</span>
+                <span class="topic-chip">📖 Books</span>
+                <span class="topic-chip">📺 K-Dramas</span>
+                <span class="topic-chip">🎤 Stand-Up Comedy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Reach Me At -->
+    <section class="section" style="background-color: var(--color-white); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 48px;">
+                <h2>Reach Me At</h2>
+                <p class="text-muted" style="max-width: 500px; margin: 8px auto 0 auto;">Choose your preferred gateway below to open up a conversation.</p>
+            </div>
+
+            <div class="channels-grid">
+                <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/kalpana-sharma9315/" target="_blank" class="channel-card">
+                    <div class="channel-icon">🔗</div>
+                    <h3>LinkedIn</h3>
+                    <p>A good place to connect, exchange ideas, and stay in touch.</p>
+                    <span class="channel-action">Connect on LinkedIn &rarr;</span>
+                </a>
+
+                <!-- Email Card -->
+                <a href="mailto:sharmakalpana3194@gmail.com" class="channel-card">
+                    <div class="channel-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>For opportunities, collaborations, speaking engagements, or professional conversations.<br><span style="display:inline-block; margin-top:12px; font-weight:500; font-family:var(--font-heading); color:var(--color-navy);">sharmakalpana3194@gmail.com</span></p>
+                    <span class="channel-action">Send an Email &rarr;</span>
+                </a>
+
+                <!-- Resume Card -->
+                <a href="assets/resume.pdf" download class="channel-card">
+                    <div class="channel-icon">📄</div>
+                    <h3>Resume</h3>
+                    <p>Looking for a quick overview of my experience, achievements, and professional journey?</p>
+                    <span class="channel-action">Download Resume &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: One Last Thing -->
+    <section class="section" style="background-color: var(--color-bg); padding: 80px 0;">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <h2>One Last Thing...</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-muted); margin-top: 16px;">
+                Thank you for stopping by. Whether something in my journey resonated with you, you're exploring an opportunity, or you're simply curious about people, culture, and leadership, I'd love to hear from you.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-muted); margin-top: 16px;">
+                And fair warning: if we do connect, there's a good chance the conversation might eventually drift from employee experience and leadership development to travel stories, books, K-dramas, or the latest stand-up comedy special worth watching.
+            </p>
+            <p style="font-size: 1.15rem; font-weight: 600; color: var(--color-purple); margin-top: 24px;">
+                In my experience, that's usually when the best conversations happen. Looking forward to connecting.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
