@@ -1,0 +1,533 @@
+<!-- managers-talent.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Developing Better Managers & Hiring Better Talent | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Portfolio Specific Architecture for Case Study Subpages */
+        .case-hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .metric-highlight {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+        .metric-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .metric-val.small-text {
+            font-size: 1.4rem;
+            line-height: 1.2;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .metric-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .case-body-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .narrative-block {
+            margin-bottom: 56px;
+        }
+        .narrative-block h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .narrative-block p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .flow-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .premium-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 14px 18px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-navy);
+            font-size: 0.95rem;
+        }
+        .premium-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .check-list li::before {
+            content: "✔";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        .approach-phase {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .approach-phase h3 {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .framework-chip {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+        @media (max-width: 992px) {
+            .case-body-layout { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-sidebar { position: relative; top: 0; }
+            .case-hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .case-hero-metrics { grid-template-columns: 1fr; }
+            .metric-val.small-text { font-size: 1.25rem; }
+            .flow-container { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../my-journey.html">My Journey</a>
+                <a href="../case-studies.html" class="active">Case Studies</a>
+                <a href="../lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Hero Section -->
+    <section class="hero-section" style="padding: 80px 0; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">Leadership Development & Talent Strategy</span>
+            <h1 style="margin-top: 16px; margin-bottom: 16px; max-width: 850px;">Developing Better Managers & Hiring Better Talent</h1>
+            <p class="lead" style="max-width: 800px; color: var(--color-text-muted);">
+                How manager capability building improved hiring effectiveness, leadership confidence, feedback culture, and employee development across the organization.
+            </p>
+            
+            <!-- Hero Metrics Grid -->
+            <div class="case-hero-metrics">
+                <div class="metric-highlight">
+                    <div class="metric-val">98%</div>
+                    <div class="metric-lbl">Hiring Effectiveness Rate</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">95.66%</div>
+                    <div class="metric-lbl">Training Effectiveness</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">Structured</div>
+                    <div class="metric-lbl">Leadership & Hiring Frameworks</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">Leadership</div>
+                    <div class="metric-lbl">Capability Building</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Narrative Section -->
+    <section class="section" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="case-body-layout">
+                
+                <!-- Main Narrative Columns -->
+                <div class="narrative-left">
+                    
+                    <!-- Overview -->
+                    <div class="narrative-block">
+                        <h2>Overview</h2>
+                        <p style="font-weight: 500; color: var(--color-navy);">As organizations grow, leadership expectations often evolve faster than leadership capability.</p>
+                        <p>Many managers are promoted because they are strong individual contributors. Yet leading people requires an entirely different set of skills.</p>
+                        <p>Hiring decisions. Coaching conversations. Performance discussions. Employee development. Feedback delivery. These responsibilities often arrive long before formal leadership training does.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 24px; margin-bottom: 4px;">The goal was not simply to improve hiring outcomes.</p>
+                        <p style="font-weight: 600; color: var(--color-purple);;">The goal was to help managers become more confident, capable, and effective people leaders.</p>
+                        <p>Improved hiring effectiveness became one outcome of that journey.</p>
+                    </div>
+
+                    <!-- The Challenge -->
+                    <div class="narrative-block">
+                        <h2>The Challenge</h2>
+                        <p>Managers were responsible for building and developing teams, but approaches often varied significantly across functions. Employee feedback, hiring outcomes, and manager discussions highlighted several opportunities:</p>
+                        <ul class="bullet-list">
+                            <li>Inconsistent interviewing approaches</li>
+                            <li>Limited structured hiring practices</li>
+                            <li>Feedback conversations focused more on performance than development</li>
+                            <li>Varying approaches to coaching and employee growth</li>
+                            <li>Managers seeking greater confidence in people leadership</li>
+                        </ul>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px; margin-bottom: 4px;">The challenge was not simply improving hiring quality.</p>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">It was creating managers who could confidently hire, develop, and support high-performing teams.</p>
+                    </div>
+
+                    <!-- What I Observed -->
+                    <div class="narrative-block">
+                        <h2>What I Observed</h2>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">As I worked with managers across different teams, one insight became clear.</p>
+                        <p>Most managers genuinely wanted to support their teams. The challenge was not intent. It was capability.</p>
+                        <p>Many managers had never been formally trained in interviewing, coaching, development conversations, or feedback delivery. Without a common framework, leadership practices varied widely across teams.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 20px;">The opportunity was to create consistency without removing individual leadership styles. That insight shaped every intervention that followed.</p>
+                    </div>
+
+                    <!-- My Role Main Section -->
+                    <div class="narrative-block">
+                        <h2>My Role</h2>
+                        <p>As the HR Business Partner, I partnered with business leaders and managers to strengthen people leadership capability across the employee lifecycle.</p>
+                        <p>My role focused on helping managers build confidence in hiring, coaching, feedback, and employee development while creating more consistent leadership practices across teams.</p>
+                    </div>
+
+                    <!-- My Approach -->
+                    <div class="narrative-block">
+                        <h2>My Approach</h2>
+                        
+                        <!-- Visual Process Flow Component -->
+                        <div class="flow-container">
+                            <div class="flow-step">Hire Better</div>
+                            <div class="flow-step">Interview Better</div>
+                            <div class="flow-step">Coach Better</div>
+                            <div class="flow-step">Lead Better</div>
+                        </div>
+
+                        <!-- Pillar 1 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 1: Building Better Hiring Managers</h3>
+                            <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Strong teams begin with strong hiring decisions. Initiatives included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Competency-based interviewing</li>
+                                <li>Behavioural interviewing techniques</li>
+                                <li>Role-specific assessment frameworks</li>
+                                <li>Candidate evaluation scorecards</li>
+                                <li>Structured interview processes</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was to improve both consistency and decision quality.</p>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 2: Interviewer Enablement</h3>
+                            <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Managers needed practical tools to become more effective interviewers. Initiatives included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Interview skills workshops</li>
+                                <li>Hiring manager coaching</li>
+                                <li>Interview calibration sessions</li>
+                                <li>Bias awareness discussions</li>
+                                <li>Candidate evaluation alignment</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">This helped create a more structured and objective hiring process.</p>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 3: Strengthening Feedback & Coaching</h3>
+                            <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">A significant focus area was helping managers move beyond transactional conversations. Development areas included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Delivering constructive feedback</li>
+                                <li>Development-focused discussions</li>
+                                <li>Building psychological safety</li>
+                                <li>Asking better coaching questions</li>
+                                <li>Encouraging accountability and ownership</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">Managers were encouraged to view feedback as an ongoing conversation rather than a periodic event.</p>
+                        </div>
+
+                        <!-- Pillar 4 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 4: Creating a Leadership Mindset</h3>
+                            <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Leadership capability extends beyond managing tasks. It requires creating clarity, trust, and growth opportunities. Focus areas included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Communication effectiveness</li>
+                                <li>Stakeholder management</li>
+                                <li>Team engagement</li>
+                                <li>Employee development</li>
+                                <li>Decision-making confidence</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was to help managers see people leadership as a core responsibility rather than an additional task.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Impact Section -->
+                    <div class="narrative-block">
+                        <h2>Impact</h2>
+                        
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 24px; margin-bottom: 8px;">Quantitative Impact</h3>
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Hiring Effectiveness Rate</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">98%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Training Effectiveness</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">95.66%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Interview Consistency</td>
+                                    <td style="color: var(--color-text-muted);">Improved</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Manager Capability</td>
+                                    <td style="color: var(--color-text-muted);">Strengthened</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- How Hiring Effectiveness Was Measured -->
+                    <div class="narrative-block">
+                        <h2>How Hiring Effectiveness Was Measured</h2>
+                        <p>Hiring effectiveness was assessed through structured feedback collected at the end of employees' probation periods.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">The evaluation included manager feedback on:</p>
+                        <ul class="bullet-list">
+                            <li>Role fit</li>
+                            <li>Performance expectations</li>
+                            <li>Learning agility</li>
+                            <li>Team integration</li>
+                            <li>Overall hiring satisfaction</li>
+                        </ul>
+                        <p style="margin-top: 16px;">Following interviewer enablement and manager capability-building initiatives, probation feedback scores reflected a 98% hiring effectiveness rate, indicating stronger hiring decisions and improved candidate-role alignment.</p>
+                    </div>
+
+                    <!-- What Changed Beyond the Numbers -->
+                    <div class="narrative-block">
+                        <h2>What Changed Beyond the Numbers</h2>
+                        <ul class="check-list">
+                            <li>Better hiring decisions</li>
+                            <li>Improved interviewer confidence</li>
+                            <li>Stronger feedback culture</li>
+                            <li>Increased manager effectiveness</li>
+                            <li>Better employee development conversations</li>
+                            <li>Greater leadership confidence</li>
+                            <li>More consistent people management practices</li>
+                            <li>Stronger employee-manager relationships</li>
+                        </ul>
+                    </div>
+
+                    <!-- What Made the Difference -->
+                    <div class="narrative-block">
+                        <h2>What Made the Difference</h2>
+                        <p>The most significant shift happened when managers stopped viewing people management as an additional responsibility. They began viewing it as leadership.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">As confidence increased:</p>
+                        <ul class="bullet-list">
+                            <li>Hiring quality improved</li>
+                            <li>Feedback conversations improved</li>
+                            <li>Development discussions became more meaningful</li>
+                            <li>Employees received greater support and clarity</li>
+                        </ul>
+                        <p style="margin-top: 16px;">The outcomes became visible across the employee lifecycle.</p>
+                    </div>
+
+                    <!-- Key Learnings -->
+                    <div class="narrative-block">
+                        <h2>Key Learnings</h2>
+                        <p>Several lessons emerged from this journey.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Managers are more effective when they have:</p>
+                        <ul class="bullet-list" style="margin-bottom: 24px;">
+                            <li>Clear expectations</li>
+                            <li>Practical frameworks</li>
+                            <li>Ongoing coaching</li>
+                            <li>Opportunities to practice and learn</li>
+                            <li>Support from leaders and HR partners</li>
+                        </ul>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.15rem; border-left: 3px solid var(--color-purple); padding-left: 16px; margin-top: 24px;">
+                            The most important lesson was simple: Leadership capability cannot be assumed. It must be intentionally developed.
+                        </p>
+                    </div>
+
+                    <!-- Reflection -->
+                    <div class="narrative-block" style="margin-bottom: 0;">
+                        <h2>Reflection</h2>
+                        <p>Strong organizations are built by strong managers. When organizations invest in manager capability, the impact extends far beyond the manager themselves. It influences hiring quality. Employee engagement. Team performance. Retention. And ultimately, business success.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 16px; margin-bottom: 4px;">The training programs were important.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem; margin-top: 12px; margin-bottom: 4px;">The real achievement was creating managers who felt confident helping others succeed.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem;">Because when managers grow, teams grow with them.</p>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Metadata Sidebar Section -->
+                <div class="sidebar-container">
+                    <div class="sticky-sidebar">
+                        
+                        <!-- My Role Sub-card -->
+                        <div style="margin-bottom: 32px;">
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">My Role</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                As the HR Business Partner, I partnered with business leaders and managers to strengthen people leadership capability across the employee lifecycle. Key areas of ownership included:
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem; padding-left: 0;">
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Manager development</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Interview effectiveness</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Hiring capability</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Feedback culture</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Employee development conversations</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 0;">Leadership coaching and enablement</li>
+                            </ul>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--color-border); margin-bottom: 28px;">
+
+                        <!-- Tools & Frameworks Sub-card -->
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Tools & Frameworks</h3>
+                            <div class="chip-container">
+                                <span class="framework-chip">Competency-Based Interviewing</span>
+                                <span class="framework-chip">Behavioural Interviewing</span>
+                                <span class="framework-chip">Interview Scorecards</span>
+                                <span class="framework-chip">Hiring Manager Workshops</span>
+                                <span class="framework-chip">Feedback & Coaching Frameworks</span>
+                                <span class="framework-chip">Leadership Development Programs</span>
+                                <span class="framework-chip">Manager Enablement Sessions</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Case Study Call To Action Section -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 64px 0;">
+        <div class="container">
+            <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); display: block; margin-bottom: 12px;">Next Case Study &rarr;</span>
+            <h2 style="font-size: 1.75rem; color: var(--color-navy); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Building a Learning Culture That Sticks</h2>
+            <a href="learning-culture.html" class="btn btn-primary">Read Next Story</a>
+        </div>
+    </section>
+
+    <!-- Footer Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

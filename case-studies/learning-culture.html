@@ -1,0 +1,528 @@
+<!-- learning-culture.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Building a Learning Culture That Sticks | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Portfolio Specific Architecture for Case Study Subpages */
+        .case-hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .metric-highlight {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+        .metric-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .metric-val.small-text {
+            font-size: 1.4rem;
+            line-height: 1.2;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .metric-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .case-body-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .narrative-block {
+            margin-bottom: 56px;
+        }
+        .narrative-block h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .narrative-block p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .flow-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .premium-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 14px 18px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-navy);
+            font-size: 0.95rem;
+        }
+        .premium-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .check-list li::before {
+            content: "✔";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        .approach-phase {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .approach-phase h3 {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .framework-chip {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+        @media (max-width: 992px) {
+            .case-body-layout { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-sidebar { position: relative; top: 0; }
+            .case-hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .case-hero-metrics { grid-template-columns: 1fr; }
+            .metric-val.small-text { font-size: 1.25rem; }
+            .flow-container { grid-template-columns: 1fr; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../my-journey.html">My Journey</a>
+                <a href="../case-studies.html" class="active">Case Studies</a>
+                <a href="../lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Hero Section -->
+    <section class="hero-section" style="padding: 80px 0; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">Learning & Capability Development</span>
+            <h1 style="margin-top: 16px; margin-bottom: 16px; max-width: 850px;">Building a Learning Culture That Sticks</h1>
+            <p class="lead" style="max-width: 800px; color: var(--color-text-muted);">
+                How learning initiatives transformed employees from learners into contributors, trainers, mentors, and emerging leaders.
+            </p>
+            
+            <!-- Hero Metrics Grid -->
+            <div class="case-hero-metrics">
+                <div class="metric-highlight">
+                    <div class="metric-val">95.66%</div>
+                    <div class="metric-lbl">Training Effectiveness</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">5+</div>
+                    <div class="metric-lbl">Capability Areas Developed</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">Expanded</div>
+                    <div class="metric-lbl">Internal Knowledge Sharing</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">SMEs to Trainers</div>
+                    <div class="metric-lbl">& Emerging Leaders</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Narrative Section -->
+    <section class="section" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="case-body-layout">
+                
+                <!-- Main Narrative Columns -->
+                <div class="narrative-left">
+                    
+                    <!-- Overview -->
+                    <div class="narrative-block">
+                        <h2>Overview</h2>
+                        <p style="font-weight: 500; color: var(--color-navy);">Learning is one of the most common investments organizations make. Yet many learning initiatives struggle to create meaningful behavioural change.</p>
+                        <p>Employees attend programs. Knowledge is shared. Certificates are awarded. But learning often remains disconnected from day-to-day growth and business impact.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 24px; margin-bottom: 4px;">The goal was not simply to deliver training.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-bottom: 4px;">The goal was to create a culture where learning became part of how people worked, collaborated, and developed.</p>
+                        <p>Most importantly, the goal was to help employees move beyond being learners and become active contributors to the growth of others.</p>
+                    </div>
+
+                    <!-- The Challenge -->
+                    <div class="narrative-block">
+                        <h2>The Challenge</h2>
+                        <p>Across teams, I noticed a common pattern. Employees were willing to learn, but learning often happened in isolation.</p>
+                        <p>Many highly capable technical professionals possessed deep expertise, yet rarely had opportunities to share their knowledge, influence others, or step into visible leadership roles. This created several challenges:</p>
+                        <ul class="bullet-list">
+                            <li>Knowledge remained concentrated within individuals</li>
+                            <li>Learning was often dependent on external programs</li>
+                            <li>Technical expertise was not always visible across teams</li>
+                            <li>Opportunities for collaboration and peer learning were limited</li>
+                            <li>Employees lacked confidence in facilitating or presenting knowledge</li>
+                        </ul>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px; margin-bottom: 4px;">The challenge was not simply delivering training.</p>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">It was creating an environment where learning became part of the culture.</p>
+                    </div>
+
+                    <!-- What I Observed -->
+                    <div class="narrative-block">
+                        <h2>What I Observed</h2>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">As I spent time understanding learning needs across teams, one insight became clear.</p>
+                        <p>The organization already had strong expertise. The challenge was not knowledge. It was visibility and sharing.</p>
+                        <p>Many employees had valuable experience, ideas, and technical capability. They simply needed opportunities and support to share what they knew.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 20px;">The opportunity was not to bring all learning from outside. It was to unlock the expertise that already existed within the organization. That insight shaped every initiative that followed.</p>
+                    </div>
+
+                    <!-- My Role Main Section -->
+                    <div class="narrative-block">
+                        <h2>My Role</h2>
+                        <p>As the HR Business Partner, I partnered with leaders, managers, and employees to identify capability gaps, create structured learning opportunities, and strengthen a culture of continuous development.</p>
+                        <p>My role focused on helping employees build new capabilities while creating systems that encouraged knowledge sharing, collaboration, and internal learning.</p>
+                    </div>
+
+                    <!-- My Approach -->
+                    <div class="narrative-block">
+                        <h2>My Approach</h2>
+                        
+                        <!-- Visual Process Flow Component -->
+                        <div class="flow-container">
+                            <div class="flow-step">Understand</div>
+                            <div class="flow-step">Develop</div>
+                            <div class="flow-step">Enable</div>
+                            <div class="flow-step">Empower</div>
+                            <div class="flow-step">Apply</div>
+                        </div>
+
+                        <!-- Pillar 1 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 1: Understanding Learning Needs</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Actions focused on comprehensive assessment:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Business requirement discussions</li>
+                                <li>Manager feedback</li>
+                                <li>Employee development conversations</li>
+                                <li>Skill-gap assessments</li>
+                                <li>Capability mapping</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was not simply to schedule training programs. It was to create meaningful development opportunities.</p>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 2: Building Structured Learning Journeys</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Core programs designed to bridge mapped gaps included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Leadership & People Management</li>
+                                <li>Feedback and Coaching</li>
+                                <li>Hiring & Interviewing Skills</li>
+                                <li>Communication & Collaboration</li>
+                                <li>Global Workplace Readiness</li>
+                                <li>Compliance & Workplace Practices</li>
+                                <li>Functional & Technical Development</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">This created a more intentional and structured learning experience across teams.</p>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 3: From Subject Matter Experts to Emerging Leaders</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Enabling talent to shift from individual work to organizational contribution via:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Internal trainer development</li>
+                                <li>Knowledge-sharing sessions</li>
+                                <li>Subject matter expert identification</li>
+                                <li>Facilitation opportunities</li>
+                                <li>First-time trainer support</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was not only to transfer knowledge. It was to help employees discover their ability to influence, teach, and lead.</p>
+                        </div>
+
+                        <!-- Pillar 4 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 4: Building Confidence Through Communication</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Empowering personnel with platforms and soft skills required for wide reach:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Presentation skills</li>
+                                <li>Facilitation techniques</li>
+                                <li>Audience engagement</li>
+                                <li>Communication effectiveness</li>
+                                <li>Confidence building</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">This helped employees move from expertise to influence.</p>
+                        </div>
+
+                        <!-- Pillar 5 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 5: Making Learning Practical</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Ensuring retention and workspace integration through:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Action planning</li>
+                                <li>Manager follow-ups</li>
+                                <li>Learning application discussions</li>
+                                <li>Peer learning opportunities</li>
+                                <li>Collaborative problem-solving</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The focus remained on behavioural change rather than attendance.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Impact Section -->
+                    <div class="narrative-block">
+                        <h2>Impact</h2>
+                        
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 24px; margin-bottom: 8px;">Quantitative Impact</h3>
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Training Effectiveness</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">95.66%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Capability Areas Developed</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">5+</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Learning Participation</td>
+                                    <td style="color: var(--color-text-muted);">Increased</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Internal Knowledge Sharing</td>
+                                    <td style="color: var(--color-text-muted);">Expanded</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- What Changed Beyond the Numbers -->
+                    <div class="narrative-block">
+                        <h2>What Changed Beyond the Numbers</h2>
+                        <ul class="check-list">
+                            <li>Improved communication and presentation skills</li>
+                            <li>Increased confidence among technical professionals</li>
+                            <li>Greater visibility for subject matter experts</li>
+                            <li>Enhanced collaboration across teams</li>
+                            <li>Stronger interpersonal relationships</li>
+                            <li>Development of internal trainers and mentors</li>
+                            <li>Stronger learning culture</li>
+                            <li>Emerging leadership behaviours</li>
+                        </ul>
+                    </div>
+
+                    <!-- What Made the Difference -->
+                    <div class="narrative-block">
+                        <h2>What Made the Difference</h2>
+                        <p>The most meaningful outcome wasn't the training effectiveness score. It was seeing employees who once preferred to stay behind the scenes become trusted trainers, mentors, and contributors within the organization.</p>
+                        <p>Knowledge became more accessible. Collaboration improved. Employees gained confidence. Technical experts began influencing the organization beyond their immediate roles.</p>
+                        <p>And learning became something people actively contributed to rather than passively attended.</p>
+                    </div>
+
+                    <!-- Key Learnings -->
+                    <div class="narrative-block">
+                        <h2>Key Learnings</h2>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Employees are more likely to engage with learning when they:</p>
+                        <ul class="bullet-list" style="margin-bottom: 24px;">
+                            <li>See practical application</li>
+                            <li>Learn from peers they trust</li>
+                            <li>Have opportunities to share knowledge</li>
+                            <li>Receive support while developing new skills</li>
+                            <li>Feel psychologically safe to contribute</li>
+                        </ul>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.15rem; border-left: 3px solid var(--color-purple); padding-left: 16px; margin-top: 24px;">
+                            The most important lesson was simple: A strong learning culture is not built through a calendar full of training programs. It is built when employees feel empowered to teach, learn, and grow together.
+                        </p>
+                    </div>
+
+                    <!-- Reflection -->
+                    <div class="narrative-block" style="margin-bottom: 0;">
+                        <h2>Reflection</h2>
+                        <p>Some of the best leaders do not begin with a title. They begin by helping others learn.</p>
+                        <p>Creating opportunities for employees to step into trainer, mentor, and knowledge-sharing roles remains one of the most rewarding aspects of building a learning culture.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem; margin-top: 12px;">The training programs were important. The real achievement was helping people discover that they had something valuable to teach.</p>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Metadata Sidebar Section -->
+                <div class="sidebar-container">
+                    <div class="sticky-sidebar">
+                        
+                        <!-- My Role Sub-card -->
+                        <div style="margin-bottom: 32px;">
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">My Role</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                As the HR Business Partner, I partnered with leaders, managers, and employees to identify capability gaps, create structured learning opportunities, and strengthen a culture of continuous development. Key areas of ownership included:
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem; padding-left: 0;">
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Learning Needs Analysis</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Skill Gap Identification</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Leadership & Manager Development</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Communication & Collaboration Skills</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Internal Knowledge Sharing</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 0;">Learning Effectiveness Measurement</li>
+                            </ul>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--color-border); margin-bottom: 28px;">
+
+                        <!-- Tools & Frameworks Sub-card -->
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Tools & Frameworks Used</h3>
+                            <div class="chip-container">
+                                <span class="framework-chip">Learning Needs Analysis</span>
+                                <span class="framework-chip">Skill Gap Assessments</span>
+                                <span class="framework-chip">Capability Mapping</span>
+                                <span class="framework-chip">Internal Trainer Programs</span>
+                                <span class="framework-chip">Knowledge Sharing Frameworks</span>
+                                <span class="framework-chip">Communication & Presentation Coaching</span>
+                                <span class="framework-chip">Learning Effectiveness Measurement</span>
+                                <span class="framework-chip">Action Planning & Reinforcement</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Case Study Call To Action Section -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 64px 0;">
+        <div class="container">
+            <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); display: block; margin-bottom: 12px;">Next Case Study &rarr;</span>
+            <h2 style="font-size: 1.75rem; color: var(--color-navy); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Building Scalable People Operations</h2>
+            <a href="people-operations.html" class="btn btn-primary">Read Next Story</a>
+        </div>
+    </section>
+
+    <!-- Footer Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

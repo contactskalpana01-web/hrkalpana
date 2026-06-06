@@ -1,0 +1,561 @@
+<!-- people-operations.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Building Scalable People Operations | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Portfolio Specific Architecture for Case Study Subpages */
+        .case-hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .metric-highlight {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+        .metric-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .metric-val.small-text {
+            font-size: 1.4rem;
+            line-height: 1.2;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .metric-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .case-body-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .narrative-block {
+            margin-bottom: 56px;
+        }
+        .narrative-block h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .narrative-block p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .flow-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .premium-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 14px 18px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-navy);
+            font-size: 0.95rem;
+        }
+        .premium-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .check-list li::before {
+            content: "✔";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        .approach-phase {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .approach-phase h3 {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .framework-chip {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+        .cta-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        @media (max-width: 992px) {
+            .case-body-layout { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-sidebar { position: relative; top: 0; }
+            .case-hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .case-hero-metrics { grid-template-columns: 1fr; }
+            .metric-val.small-text { font-size: 1.25rem; }
+            .flow-container { grid-template-columns: 1fr; gap: 8px; }
+            .cta-btn-group { flex-direction: column; gap: 12px; align-items: center; }
+            .cta-btn-group .btn { width: 100%; max-width: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../my-journey.html">My Journey</a>
+                <a href="../case-studies.html" class="active">Case Studies</a>
+                <a href="../lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Hero Section -->
+    <section class="hero-section" style="padding: 80px 0; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">HR Transformation & Organizational Effectiveness</span>
+            <h1 style="margin-top: 16px; margin-bottom: 16px; max-width: 850px;">Building Scalable People Operations</h1>
+            <p class="lead" style="max-width: 800px; color: var(--color-text-muted);">
+                How HR systems, policies, onboarding frameworks, and people processes created the foundation for sustainable growth, consistency, and employee success.
+            </p>
+            
+            <!-- Hero Metrics Grid -->
+            <div class="case-hero-metrics">
+                <div class="metric-highlight">
+                    <div class="metric-val">30+</div>
+                    <div class="metric-lbl">Policies & Frameworks Created</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">100%</div>
+                    <div class="metric-lbl">Compliance Adherence</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">End-to-End</div>
+                    <div class="metric-lbl">Employee Lifecycle Coverage</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">Scalable</div>
+                    <div class="metric-lbl">People Operations Foundation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Narrative Section -->
+    <section class="section" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="case-body-layout">
+                
+                <!-- Main Narrative Columns -->
+                <div class="narrative-left">
+                    
+                    <!-- Overview -->
+                    <div class="narrative-block">
+                        <h2>Overview</h2>
+                        <p style="font-weight: 500; color: var(--color-navy);">As organizations grow, informal ways of working eventually reach their limits.</p>
+                        <p>Processes that work for a small team can quickly create confusion, inconsistency, and operational risk as headcount, complexity, and stakeholder expectations increase.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 24px; margin-bottom: 4px;">The objective was not simply to manage HR operations.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-bottom: 4px;">The objective was to create a strong people infrastructure that could support growth while ensuring employees experienced consistency, clarity, and support throughout their journey.</p>
+                        <p>By building scalable frameworks, policies, and employee lifecycle processes, the focus shifted from solving recurring operational challenges to creating systems that enabled sustainable growth.</p>
+                    </div>
+
+                    <!-- The Challenge -->
+                    <div class="narrative-block">
+                        <h2>The Challenge</h2>
+                        <p>The organization was evolving rapidly, creating new operational and people requirements. As teams expanded, the need for structure became increasingly important. Several challenges emerged:</p>
+                        <ul class="bullet-list">
+                            <li>Inconsistent people processes across teams</li>
+                            <li>Growing compliance and governance requirements</li>
+                            <li>Limited process documentation</li>
+                            <li>Need for a scalable onboarding experience</li>
+                            <li>Increasing manager dependency on HR for routine processes</li>
+                            <li>Risk of inconsistent employee experiences</li>
+                        </ul>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px; margin-bottom: 4px;">Without clear frameworks, growth could create confusion, inefficiencies, and operational risk.</p>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">The challenge was not simply creating policies. It was building systems that could scale with the organization.</p>
+                    </div>
+
+                    <!-- What I Observed -->
+                    <div class="narrative-block">
+                        <h2>What I Observed</h2>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">As I reviewed existing workflows and employee touchpoints, one insight became clear.</p>
+                        <p>Most operational challenges were not caused by people. They were caused by a lack of consistency.</p>
+                        <p>Different teams often approached similar situations differently. Processes existed, but they were not always documented, standardized, or easy to navigate.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 20px;">The opportunity was not to create more rules. It was to create clarity. That insight became the foundation of the transformation.</p>
+                    </div>
+
+                    <!-- My Role Main Section -->
+                    <div class="narrative-block">
+                        <h2>My Role</h2>
+                        <p>As part of the HR function, I partnered closely with leadership and stakeholders to build people operations frameworks that supported both employees and the business.</p>
+                        <p>My role focused on creating scalable systems, improving operational consistency, and ensuring employees could navigate their journey with greater clarity and confidence.</p>
+                    </div>
+
+                    <!-- My Approach -->
+                    <div class="narrative-block">
+                        <h2>My Approach</h2>
+                        
+                        <!-- Visual Process Flow Component -->
+                        <div class="flow-container">
+                            <div class="flow-step">1. Assess</div>
+                            <div class="flow-step">2. Build</div>
+                            <div class="flow-step">3. Streamline</div>
+                            <div class="flow-step">4. Enable</div>
+                            <div class="flow-step">5. Sustain</div>
+                        </div>
+
+                        <!-- Pillar 1 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 1: Assess</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Reviewing existing people processes to identify gaps and improvement opportunities:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Recruitment handoffs</li>
+                                <li>Onboarding experiences</li>
+                                <li>Employee documentation</li>
+                                <li>Performance processes</li>
+                                <li>Compliance practices</li>
+                                <li>Exit management</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was to understand where inconsistencies existed before introducing solutions.</p>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 2: Build</h3>
+                            <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-navy); margin-bottom: 4px;">Policies & Governance</p>
+                            <ul class="bullet-list" style="margin: 0 0 16px 0; font-size: 0.95rem;">
+                                <li>HR policy framework</li>
+                                <li>Employee handbook enhancements</li>
+                                <li>Compliance processes</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-navy); margin-bottom: 4px;">Documentation & SOPs</p>
+                            <ul class="bullet-list" style="margin: 0 0 16px 0; font-size: 0.95rem;">
+                                <li>Standard operating procedures</li>
+                                <li>Employee lifecycle workflows</li>
+                                <li>Documentation standards</li>
+                                <li>HR process guidelines</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; font-weight: 600; color: var(--color-navy); margin-bottom: 4px;">Employee Experience Foundations</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Onboarding journeys</li>
+                                <li>Employee communication practices</li>
+                                <li>Manager support resources</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 3: Streamline</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Improving process clarity and reducing operational complexity:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Process clarity</li>
+                                <li>Documentation consistency</li>
+                                <li>Stakeholder accountability</li>
+                                <li>Employee self-service readiness</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The goal was to make processes easier to understand and easier to follow.</p>
+                        </div>
+
+                        <!-- Pillar 4 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 4: Enable</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Equipping managers with the knowledge and resources needed to navigate people processes confidently:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Policy awareness</li>
+                                <li>Employee lifecycle guidance</li>
+                                <li>Performance process support</li>
+                                <li>Escalation frameworks</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">This reduced dependency on HR while improving consistency across teams.</p>
+                        </div>
+
+                        <!-- Pillar 5 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 5: Sustain</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Success was monitored through continuous feedback and process adoption:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Process adoption</li>
+                                <li>Compliance adherence</li>
+                                <li>Employee feedback</li>
+                                <li>Manager experience</li>
+                                <li>Operational efficiency</li>
+                            </ul>
+                            <p style="font-size: 0.95rem; margin-top: 12px; font-style: italic; color: var(--color-text-muted);">The objective was to ensure systems continued evolving alongside business needs.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Impact Section -->
+                    <div class="narrative-block">
+                        <h2>Impact</h2>
+                        
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 24px; margin-bottom: 8px;">Quantitative Impact</h3>
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Policies & Frameworks Created</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">30+</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Compliance Adherence</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">100%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Employee Lifecycle Coverage</td>
+                                    <td style="color: var(--color-text-muted);">End-to-End</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Process Standardization</td>
+                                    <td style="color: var(--color-text-muted);">Improved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- What Changed Beyond the Numbers -->
+                    <div class="narrative-block">
+                        <h2>What Changed Beyond the Numbers</h2>
+                        <ul class="check-list">
+                            <li>Greater process consistency</li>
+                            <li>Improved employee experience</li>
+                            <li>Better compliance readiness</li>
+                            <li>Stronger manager confidence</li>
+                            <li>Managers became more self-sufficient in navigating people processes</li>
+                            <li>Reduced operational ambiguity</li>
+                            <li>Scalable HR infrastructure</li>
+                            <li>Clearer employee lifecycle experiences</li>
+                            <li>Improved governance and accountability</li>
+                        </ul>
+                    </div>
+
+                    <!-- What Made the Difference -->
+                    <div class="narrative-block">
+                        <h2>What Made the Difference</h2>
+                        <p>The biggest shift was moving from reactive HR support to proactive people operations.</p>
+                        <p>Instead of solving the same challenges repeatedly, systems and frameworks were created to prevent those challenges from occurring in the first place.</p>
+                        <p>This allowed HR to spend less time managing operational friction and more time supporting business priorities and employee success.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem; margin-top: 12px;">The real transformation was not the policies themselves. It was the clarity they created.</p>
+                    </div>
+
+                    <!-- Core Areas Built Section -->
+                    <div class="narrative-block">
+                        <h2>Core Areas Built</h2>
+                        <div class="chip-container">
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Employee Lifecycle Management</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Onboarding Frameworks</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">HR Policies & Governance</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Compliance & Documentation</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Manager Enablement</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Process Standardization</span>
+                            <span class="framework-chip" style="background-color: var(--color-bg); padding: 8px 16px;">Employee Experience Foundations</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Learnings -->
+                    <div class="narrative-block">
+                        <h2>Key Learnings</h2>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Employees experience an organization through its processes just as much as through its people. Well-designed systems create:</p>
+                        <ul class="bullet-list" style="margin-bottom: 24px;">
+                            <li>Consistency</li>
+                            <li>Clarity</li>
+                            <li>Trust</li>
+                            <li>Accountability</li>
+                            <li>Scalability</li>
+                        </ul>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.15rem; border-left: 3px solid var(--color-purple); padding-left: 16px; margin-top: 24px;">
+                            The most important lesson was simple: Strong culture requires strong foundations.
+                        </p>
+                    </div>
+
+                    <!-- Reflection -->
+                    <div class="narrative-block" style="margin-bottom: 0;">
+                        <h2>Reflection</h2>
+                        <p>Great HR operations are often invisible. When systems are well-designed, employees experience clarity, consistency, and support without needing to think about the processes behind them.</p>
+                        <p>The policies were important.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem; margin-top: 12px;">The real achievement was creating a foundation that allowed people and the business to grow with confidence.</p>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Metadata Sidebar Section -->
+                <div class="sidebar-container">
+                    <div class="sticky-sidebar">
+                        
+                        <!-- My Role Sub-card -->
+                        <div style="margin-bottom: 32px;">
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">My Role</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                As part of the HR function, I partnered closely with leadership and stakeholders to build people operations frameworks that supported both employees and the business. Key areas of ownership included:
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.9rem; padding-left: 0;">
+                                <li style="margin-bottom: 10px;">HR policies and governance</li>
+                                <li style="margin-bottom: 10px;">Employee lifecycle management</li>
+                                <li style="margin-bottom: 10px;">Onboarding frameworks</li>
+                                <li style="margin-bottom: 10px;">Compliance initiatives</li>
+                                <li style="margin-bottom: 10px;">Documentation and SOP creation</li>
+                                <li style="margin-bottom: 0;">Manager enablement</li>
+                            </ul>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--color-border); margin-bottom: 28px;">
+
+                        <!-- Tools & Frameworks Sub-card -->
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Tools & Frameworks Used</h3>
+                            <div class="chip-container">
+                                <span class="framework-chip">HR Policy Frameworks</span>
+                                <span class="framework-chip">SOP Design</span>
+                                <span class="framework-chip">Employee Lifecycle Mapping</span>
+                                <span class="framework-chip">Compliance Management</span>
+                                <span class="framework-chip">Onboarding Framework Design</span>
+                                <span class="framework-chip">Process Improvement Methodologies</span>
+                                <span class="framework-chip">Manager Enablement Resources</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Portfolio Completion CTA Section -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 64px 0;">
+        <div class="container">
+            <h2 style="font-size: 2rem; color: var(--color-navy); margin-bottom: 12px; max-width: 700px; margin-left: auto; margin-right: auto;">Interested in how I approach people, culture, and business challenges?</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 24px;">Explore my journey, case studies, or connect with me directly.</p>
+            <div class="cta-btn-group">
+                <a href="my-journey.html" class="btn btn-secondary">View My Journey</a>
+                <a href="lets-connect.html" class="btn btn-primary">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

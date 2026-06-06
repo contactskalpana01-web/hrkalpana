@@ -1,0 +1,572 @@
+<!-- enps-transformation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: eNPS Transformation | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Portfolio Specific Architecture for Case Study Subpages */
+        .case-hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .metric-highlight {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+        .metric-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .metric-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .case-body-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .narrative-block {
+            margin-bottom: 56px;
+        }
+        .narrative-block h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .narrative-block p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .flow-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        .flow-step.active {
+            border-color: var(--color-purple);
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--color-purple);
+        }
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .premium-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 14px 18px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-navy);
+            font-size: 0.95rem;
+        }
+        .premium-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .check-list li::before {
+            content: "✔";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        .approach-phase {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .approach-phase h3 {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .sub-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+        .sub-card h4 {
+            font-size: 0.95rem;
+            color: var(--color-purple);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sub-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .sub-card ul li {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 4px;
+            padding-left: 12px;
+            position: relative;
+        }
+        .sub-card ul li::before {
+            content: "◦";
+            color: var(--color-text-muted);
+            position: absolute;
+            left: 0;
+        }
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .framework-chip {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+        @media (max-width: 992px) {
+            .case-body-layout { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-sidebar { position: relative; top: 0; }
+            .case-hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .case-hero-metrics { grid-template-columns: 1fr; }
+            .flow-container { grid-template-columns: 1fr; gap: 8px; }
+            .sub-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../my-journey.html">My Journey</a>
+                <a href="../case-studies.html" class="active">Case Studies</a>
+                <a href="../lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Hero Section -->
+    <section class="hero-section" style="padding: 80px 0; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">Culture & Employee Engagement</span>
+            <h1 style="margin-top: 16px; margin-bottom: 16px; max-width: 750px;">From 35 to 82: The eNPS Transformation</h1>
+            <p class="lead" style="max-width: 800px; color: var(--color-text-muted);">
+                How employee listening, recognition redesign, and leadership involvement increased employee advocacy by 134%.
+            </p>
+            
+            <!-- Hero Metrics Grid -->
+            <div class="case-hero-metrics">
+                <div class="metric-highlight">
+                    <div class="metric-val">35 → 82</div>
+                    <div class="metric-lbl">eNPS Score</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">+134%</div>
+                    <div class="metric-lbl">Advocacy Growth</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">200+</div>
+                    <div class="metric-lbl">Employees Impacted</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">10+</div>
+                    <div class="metric-lbl">New Initiatives</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Narrative Section -->
+    <section class="section" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="case-body-layout">
+                
+                <!-- Main Narrative Columns -->
+                <div class="narrative-left">
+                    
+                    <!-- Overview -->
+                    <div class="narrative-block">
+                        <h2>Overview</h2>
+                        <p style="font-weight: 500; color: var(--color-navy);">Employee engagement is rarely transformed by a single initiative. It is built through trust, consistency, and the belief that employee voices genuinely matter.</p>
+                        <p>When I began reviewing employee sentiment and engagement data, one thing became clear: improving the eNPS score was not the real challenge. The real challenge was creating an environment where employees felt heard, recognized, and connected to the organization.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 24px; margin-bottom: 4px;">The goal was never to increase a number.</p>
+                        <p style="font-weight: 600; color: var(--color-purple);">The goal was to strengthen employee trust and advocacy.</p>
+                        <p>The improved score became the outcome of that work.</p>
+                    </div>
+
+                    <!-- The Challenge -->
+                    <div class="narrative-block">
+                        <h2>The Challenge</h2>
+                        <p>Employee feedback revealed a common theme. People cared deeply about their work and wanted to contribute, but there were opportunities to strengthen how employees experienced recognition, communication, and involvement across the organization.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px; margin-bottom: 8px;">Key themes emerged from preliminary reviews:</p>
+                        <ul class="bullet-list">
+                            <li>Recognition was inconsistent across teams</li>
+                            <li>Employee feedback was not always visibly translated into action</li>
+                            <li>Career and growth conversations lacked structure</li>
+                            <li>Cross-functional collaboration could be stronger</li>
+                            <li>Employees wanted greater visibility into leadership decisions</li>
+                        </ul>
+                        <p style="margin-top: 20px;">As a result, employee advocacy remained at 35 eNPS, highlighting a significant opportunity to improve engagement and trust.</p>
+                    </div>
+
+                    <!-- What I Discovered -->
+                    <div class="narrative-block">
+                        <h2>What I Discovered</h2>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">The data pointed to an important insight.</p>
+                        <p>Employees were not disengaged. They wanted to be involved. They wanted to be recognized. And most importantly, they wanted evidence that their feedback influenced decisions.</p>
+                        <p>The challenge was not a lack of commitment from employees. It was a lack of visibility, consistency, and communication. That insight shaped every intervention that followed.</p>
+                    </div>
+
+                    <!-- My Role Main Section -->
+                    <div class="narrative-block">
+                        <h2>My Role</h2>
+                        <p>As the HR Business Partner, I partnered closely with leaders and managers to understand employee concerns, identify engagement gaps, and translate feedback into meaningful action.</p>
+                        <p>My role involved connecting employee sentiment with business priorities, ensuring that engagement initiatives were not only well received but also sustainable and measurable.</p>
+                    </div>
+
+                    <!-- My Approach -->
+                    <div class="narrative-block">
+                        <h2>My Approach</h2>
+                        
+                        <!-- Visual Process Flow Component -->
+                        <div class="flow-container">
+                            <div class="flow-step">Listen</div>
+                            <div class="flow-step">Diagnose</div>
+                            <div class="flow-step">Design</div>
+                            <div class="flow-step">Execute</div>
+                            <div class="flow-step">Measure</div>
+                        </div>
+
+                        <!-- Phase 1 -->
+                        <div class="approach-phase">
+                            <h3>Phase 1: Listen</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Before designing solutions, we needed to understand the employee experience more deeply. Actions included:</p>
+                            <div class="chip-container" style="margin-top: 0;">
+                                <span class="framework-chip" style="background: var(--color-bg);">eNPS Analysis</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Focus Group Discussions</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Skip-level Conversations</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Pulse Survey Reviews</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Employee Listening Sessions</span>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="approach-phase">
+                            <h3>Phase 2: Diagnose</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 8px;">The goal was to identify root causes rather than react to symptoms. The findings consistently pointed toward:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.9rem;">
+                                <li style="font-size: 0.95rem; margin-bottom: 6px;">Recognition gaps</li>
+                                <li style="font-size: 0.95rem; margin-bottom: 6px;">Communication challenges</li>
+                                <li style="font-size: 0.95rem; margin-bottom: 6px;">Career visibility concerns</li>
+                                <li style="font-size: 0.95rem; margin-bottom: 0;">Opportunities to strengthen manager capability</li>
+                            </ul>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div class="approach-phase">
+                            <h3>Phase 3: Design</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 4px;">Based on employee feedback, we designed targeted interventions across four key areas:</p>
+                            
+                            <div class="sub-grid">
+                                <div class="sub-card">
+                                    <h4>Recognition & Rewards</h4>
+                                    <ul>
+                                        <li>Peer recognition programs</li>
+                                        <li>Transparent recognition framework</li>
+                                        <li>Celebration initiatives</li>
+                                        <li>Spot awards</li>
+                                    </ul>
+                                </div>
+                                <div class="sub-card">
+                                    <h4>Employee Listening</h4>
+                                    <ul>
+                                        <li>Pulse surveys</li>
+                                        <li>Feedback loops</li>
+                                        <li>Focus group discussions</li>
+                                        <li>Action planning sessions</li>
+                                    </ul>
+                                </div>
+                                <div class="sub-card">
+                                    <h4>Leadership Visibility</h4>
+                                    <ul>
+                                        <li>Open forums</li>
+                                        <li>Ask-Me-Anything sessions</li>
+                                        <li>Leadership connects</li>
+                                    </ul>
+                                </div>
+                                <div class="sub-card">
+                                    <h4>Employee Experience</h4>
+                                    <ul>
+                                        <li>Culture initiatives</li>
+                                        <li>Team engagement programs</li>
+                                        <li>Wellbeing interventions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 4 -->
+                        <div class="approach-phase">
+                            <h3>Phase 4: Execute</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Over 10 employee experience and recognition initiatives were launched through a structured implementation plan built around four execution filters:</p>
+                            <ul class="check-list" style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Consistency</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Leadership involvement</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Employee ownership</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Measurable outcomes</li>
+                            </ul>
+                        </div>
+
+                        <!-- Phase 5 -->
+                        <div class="approach-phase">
+                            <h3>Phase 5: Measure</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">To evaluate real progression and structural adoption, we monitored distinct internal datasets continuously:</p>
+                            <div class="chip-container" style="margin-top: 0;">
+                                <span class="framework-chip" style="background: var(--color-bg);">eNPS Trends</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Participation Data</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Feedback Scores</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Employee Sentiment Indicators</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Manager Adoption Metrics</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Impact Section -->
+                    <div class="narrative-block">
+                        <h2>Impact</h2>
+                        
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 24px; margin-bottom: 8px;">Quantitative Impact</h3>
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Before</th>
+                                    <th>After</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">eNPS</td>
+                                    <td>35</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">82</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Employee Advocacy</td>
+                                    <td>Baseline</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">+134% Growth</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Participation Levels</td>
+                                    <td>Moderate</td>
+                                    <td>High</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Leadership Visibility</td>
+                                    <td>Limited</td>
+                                    <td>Strong</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 36px; margin-bottom: 12px;">What Changed Beyond the Numbers</h3>
+                        <ul class="check-list">
+                            <li>Employees became more willing to share feedback</li>
+                            <li>Managers became more active participants in engagement initiatives</li>
+                            <li>Recognition became more visible and consistent</li>
+                            <li>Employees reported stronger trust in leadership</li>
+                            <li>Engagement became an ongoing conversation rather than a periodic event</li>
+                        </ul>
+                    </div>
+
+                    <!-- Key Learnings -->
+                    <div class="narrative-block">
+                        <h2>Key Learnings</h2>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Employee engagement improves when people can clearly see:</p>
+                        <ul class="bullet-list" style="margin-bottom: 24px;">
+                            <li>Their feedback being heard</li>
+                            <li>Leadership taking visible action</li>
+                            <li>Recognition happening consistently</li>
+                            <li>Managers actively participating</li>
+                        </ul>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.15rem; border-left: 3px solid var(--color-purple); padding-left: 16px; margin-top: 24px;">
+                            The most important lesson was simple: Engagement is not built through one large initiative. It is built through hundreds of small actions that reinforce trust over time.
+                        </p>
+                    </div>
+
+                    <!-- Reflection -->
+                    <div class="narrative-block" style="margin-bottom: 0;">
+                        <h2>Reflection</h2>
+                        <p>One of the biggest lessons from this journey was that engagement is rarely transformed by a single initiative. It improves when employees repeatedly see evidence that their feedback matters, their contributions are recognized, and leaders are willing to listen.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 16px; margin-bottom: 4px;">Trust is built in small moments.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 4px;">The eNPS score was the outcome.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem;">Trust was the real achievement.</p>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Metadata Sidebar Section -->
+                <div class="sidebar-container">
+                    <div class="sticky-sidebar">
+                        
+                        <!-- My Role Sub-card -->
+                        <div style="margin-bottom: 32px;">
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">My Role</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                As the HR Business Partner, I partnered closely with business leaders and managers to:
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem; padding-left: 0;">
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Analyze employee sentiment and engagement trends</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Identify root causes behind engagement challenges</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Design targeted employee experience interventions</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Improve manager accountability and participation</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Strengthen leadership visibility and communication</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 0;">Measure progress through ongoing feedback and engagement data</li>
+                            </ul>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--color-border); margin-bottom: 28px;">
+
+                        <!-- Tools & Frameworks Sub-card -->
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Tools & Frameworks</h3>
+                            <div class="chip-container">
+                                <span class="framework-chip">eNPS Surveys</span>
+                                <span class="framework-chip">Pulse Surveys</span>
+                                <span class="framework-chip">Focus Group Discussions</span>
+                                <span class="framework-chip">Employee Listening Frameworks</span>
+                                <span class="framework-chip">Recognition Programs</span>
+                                <span class="framework-chip">Leadership Connects</span>
+                                <span class="framework-chip">Action Planning Workshops</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Case Study Call To Action Section -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 64px 0;">
+        <div class="container">
+            <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); display: block; margin-bottom: 12px;">Next Case Study &rarr;</span>
+            <h2 style="font-size: 1.75rem; color: var(--color-navy); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Building a Happiness-First Culture Across Global Teams</h2>
+            <a href="happiness-culture.html" class="btn btn-primary">Read Next Story</a>
+        </div>
+    </section>
+
+    <!-- Footer Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!-- happiness-culture.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Happiness-First Culture | Kalpana Sharma</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600&family=Poppins:wght=600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Portfolio Specific Architecture for Case Study Subpages */
+        .case-hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .metric-highlight {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+        .metric-val {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            margin-bottom: 4px;
+        }
+        .metric-val.small-text {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .metric-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .case-body-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+        .sticky-sidebar {
+            position: sticky;
+            top: 40px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+        .narrative-block {
+            margin-bottom: 56px;
+        }
+        .narrative-block h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .narrative-block p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 32px 0;
+            position: relative;
+        }
+        .flow-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-navy);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            text-align: left;
+        }
+        .premium-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 14px 18px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-navy);
+            font-size: 0.95rem;
+        }
+        .premium-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+        .premium-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .check-list li::before {
+            content: "✔";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+        }
+        .bullet-list li::before {
+            content: "•";
+            color: var(--color-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        .approach-phase {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .approach-phase h3 {
+            font-size: 1.2rem;
+            color: var(--color-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .sub-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+        .sub-card h4 {
+            font-size: 0.95rem;
+            color: var(--color-purple);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .sub-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .sub-card ul li {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 4px;
+            padding-left: 12px;
+            position: relative;
+        }
+        .sub-card ul li::before {
+            content: "◦";
+            color: var(--color-text-muted);
+            position: absolute;
+            left: 0;
+        }
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .framework-chip {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-navy);
+        }
+        @media (max-width: 992px) {
+            .case-body-layout { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-sidebar { position: relative; top: 0; }
+            .case-hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .case-hero-metrics { grid-template-columns: 1fr; }
+            .metric-val.small-text { font-size: 1.35rem; }
+            .flow-container { grid-template-columns: 1fr; gap: 8px; }
+            .sub-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">Kalpana <span class="text-purple">Sharma</span></a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../my-journey.html">My Journey</a>
+                <a href="../case-studies.html" class="active">Case Studies</a>
+                <a href="../lets-connect.html" class="btn btn-secondary">Let's Connect</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Hero Section -->
+    <section class="hero-section" style="padding: 80px 0; background-color: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <span class="badge" style="background: rgba(99, 102, 241, 0.1); color: var(--color-purple);">Employee Experience & Workplace Culture</span>
+            <h1 style="margin-top: 16px; margin-bottom: 16px; max-width: 850px;">Building a Happiness-First Culture Across Global Teams</h1>
+            <p class="lead" style="max-width: 800px; color: var(--color-text-muted);">
+                How employee experience design, cultural alignment, and structured connection programs helped employees feel connected to both The Scalers and the global organizations they supported.
+            </p>
+            
+            <!-- Hero Metrics Grid -->
+            <div class="case-hero-metrics">
+                <div class="metric-highlight">
+                    <div class="metric-val">95%</div>
+                    <div class="metric-lbl">Happiness Score</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">95%</div>
+                    <div class="metric-lbl">Employee Retention</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val small-text">APAC | US<br>UK | Europe</div>
+                    <div class="metric-lbl">Global Regions Supported</div>
+                </div>
+                <div class="metric-highlight">
+                    <div class="metric-val">15/30/60</div>
+                    <div class="metric-lbl">Connect Framework</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Narrative Section -->
+    <section class="section" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="case-body-layout">
+                
+                <!-- Main Narrative Columns -->
+                <div class="narrative-left">
+                    
+                    <!-- Overview -->
+                    <div class="narrative-block">
+                        <h2>Overview</h2>
+                        <p style="font-weight: 500; color: var(--color-navy);">Creating a positive employee experience becomes significantly more complex when teams are distributed across geographies, cultures, and organizational boundaries.</p>
+                        <p>At The Scalers, employees work closely with partner organizations across APAC, US, UK, and Europe while being employed by The Scalers. This creates a unique challenge. Employees don't just need to feel connected to their immediate team. They need to feel connected to the partner organizations they support, the leaders they collaborate with, and the culture they represent every day.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 24px; margin-bottom: 4px;">The goal was to create a workplace where employees felt connected, supported, and valued regardless of geography.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-bottom: 4px;">The objective was to create an experience where employees could feel connected to both The Scalers and the organizations they supported.</p>
+                        <p>The happiness score became the outcome of that work.</p>
+                    </div>
+
+                    <!-- The Challenge -->
+                    <div class="narrative-block">
+                        <h2>The Challenge</h2>
+                        <p>The challenge was not engagement. It was identity and belonging. Employees worked daily with global stakeholders across multiple regions. They attended partner meetings, collaborated with overseas teams, and represented partner brands. Yet they were employed by a different organization.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px; margin-bottom: 8px;">This created a unique employee experience challenge:</p>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500; margin-bottom: 16px;">How do you help employees feel connected to both organizations without feeling disconnected from either?</p>
+                        <p>Additional challenges included:</p>
+                        <ul class="bullet-list">
+                            <li>Different communication styles across regions</li>
+                            <li>Diverse stakeholder expectations and work cultures</li>
+                            <li>Limited face-to-face interaction with global teams</li>
+                            <li>Risk of employee isolation in distributed environments</li>
+                            <li>Maintaining a consistent employee experience across teams</li>
+                        </ul>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 20px;">The objective was not simply to create engagement programs. It was to create a sense of belonging.</p>
+                    </div>
+
+                    <!-- What I Discovered -->
+                    <div class="narrative-block">
+                        <h2>What I Observed</h2>
+                        <p style="font-style: italic; color: var(--color-navy); font-weight: 500;">As I spent time listening to employees, managers, and partner stakeholders, one insight became clear.</p>
+                        <p>The strongest employee experiences were not being created by perks or events. They were being created by connection.</p>
+                        <p>Employees who felt connected to their managers, understood their role in the larger business, and had visibility into organizational decisions consistently demonstrated higher engagement and stronger commitment.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); margin-top: 20px;">The challenge was not distance. The challenge was connection. That realization shaped every initiative that followed.</p>
+                    </div>
+
+                    <!-- My Role Main Section -->
+                    <div class="narrative-block">
+                        <h2>My Role</h2>
+                        <p>As the HR Business Partner, I partnered closely with leaders, partner managers, and employees to strengthen employee experience, cultural integration, and workplace connection.</p>
+                        <p>My role focused on designing employee experiences that strengthened belonging, improved stakeholder alignment, and helped employees feel connected to both The Scalers and the organizations they supported.</p>
+                    </div>
+
+                    <!-- My Approach -->
+                    <div class="narrative-block">
+                        <h2>My Approach</h2>
+                        
+                        <!-- Visual Process Flow Component -->
+                        <div class="flow-container">
+                            <div class="flow-step">Connection</div>
+                            <div class="flow-step">Belonging</div>
+                            <div class="flow-step">Readiness</div>
+                            <div class="flow-step">Visibility</div>
+                            <div class="flow-step">Wellbeing</div>
+                        </div>
+
+                        <!-- Pillar 1 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 1: Strengthening Connection</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">These conversations helped employees feel supported throughout their journey. Actions included:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>15 / 30 / 60-day employee conversations</li>
+                                <li>Structured manager check-ins</li>
+                                <li>Employee connect programs</li>
+                                <li>Ongoing support touchpoints</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pillar 2 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 2: Building Belonging</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">These efforts reinforced connection beyond project delivery and day-to-day work. Focus areas included:</p>
+                            <div class="chip-container" style="margin-top: 0;">
+                                <span class="framework-chip" style="background: var(--color-bg);">Recognition Programs</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Celebration Frameworks</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Team Engagement Activities</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Community-Building Experiences</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Employee Appreciation Initiatives</span>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 3 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 3: Building Global Readiness</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">The objective was not to change who employees were. It was to help them confidently operate in global environments through:</p>
+                            <ul class="bullet-list" style="margin: 0; font-size: 0.95rem;">
+                                <li>Cross-cultural communication coaching</li>
+                                <li>Global workplace readiness sessions</li>
+                                <li>Stakeholder management guidance</li>
+                                <li>Understanding regional communication styles</li>
+                                <li>Navigating diverse work expectations</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pillar 4 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 4: Increasing Leadership Visibility</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">Employees gained greater visibility into organizational priorities and decision-making through:</p>
+                            <div class="chip-container" style="margin-top: 0;">
+                                <span class="framework-chip" style="background: var(--color-bg);">Leadership Connect Sessions</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Open Q&A Forums</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Skip-Level Conversations</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Business Updates & Town Halls</span>
+                                <span class="framework-chip" style="background: var(--color-bg);">Employee Feedback Forums</span>
+                            </div>
+                        </div>
+
+                        <!-- Pillar 5 -->
+                        <div class="approach-phase">
+                            <h3>Pillar 5: Supporting Wellbeing</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 12px;">This ensured employees had access to both practical and emotional support when needed. Mechanisms deployed:</p>
+                            <ul class="check-list" style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Wellbeing programs</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Employee support mechanisms</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Safe spaces for feedback</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Continuous listening</li>
+                                <li style="margin-bottom: 0; font-size: 0.95rem;">Proactive employee support</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Impact Section -->
+                    <div class="narrative-block">
+                        <h2>Impact</h2>
+                        
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 24px; margin-bottom: 8px;">Quantitative Impact</h3>
+                        <table class="premium-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Happiness Score</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">95%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Employee Retention</td>
+                                    <td style="font-weight: 600; color: var(--color-purple);">95%</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Stakeholder Regions Supported</td>
+                                    <td>APAC, US, UK & Europe</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 500; color: var(--color-navy);">Employee Connect Framework</td>
+                                    <td>15 / 30 / 60</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 style="font-size: 1.2rem; color: var(--color-navy); margin-top: 36px; margin-bottom: 12px;">What Changed Beyond the Numbers</h3>
+                        <ul class="check-list">
+                            <li>Stronger employee belonging</li>
+                            <li>Better alignment with partner organizations</li>
+                            <li>Increased stakeholder confidence</li>
+                            <li>Improved communication across cultures</li>
+                            <li>Stronger employee-manager relationships</li>
+                            <li>Enhanced employee experience</li>
+                            <li>Greater visibility into organizational priorities</li>
+                            <li>More connected distributed teams</li>
+                            <li>Stronger integration between employees, managers, and partner stakeholders</li>
+                        </ul>
+                    </div>
+
+                    <!-- Key Learnings -->
+                    <div class="narrative-block">
+                        <h2>Key Learnings</h2>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 12px;">Employees feel more connected when they:</p>
+                        <ul class="bullet-list" style="margin-bottom: 24px;">
+                            <li>Understand how their work contributes to larger goals</li>
+                            <li>Have regular access to managers and leaders</li>
+                            <li>Feel comfortable navigating different cultures</li>
+                            <li>Receive recognition and appreciation consistently</li>
+                            <li>Have opportunities to build meaningful relationships</li>
+                        </ul>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.15rem; border-left: 3px solid var(--color-purple); padding-left: 16px; margin-top: 24px;">
+                            The most important lesson was simple: Belonging cannot be left to chance. It must be intentionally designed.
+                        </p>
+                    </div>
+
+                    <!-- Reflection -->
+                    <div class="narrative-block" style="margin-bottom: 0;">
+                        <h2>Reflection</h2>
+                        <p>One of the biggest lessons from this journey was that belonging is not created by location. It is created by connection. Employees do not need to sit in the same office to feel a sense of belonging.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-top: 16px; margin-bottom: 4px;">They need opportunities to build relationships, understand purpose, and feel seen.</p>
+                        <p style="font-weight: 500; color: var(--color-navy); margin-bottom: 4px;">When those elements exist, geography becomes far less important.</p>
+                        <p style="font-weight: 600; color: var(--color-purple); font-size: 1.1rem; margin-top: 12px;">The happiness score was the outcome. Belonging was the real achievement.</p>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Metadata Sidebar Section -->
+                <div class="sidebar-container">
+                    <div class="sticky-sidebar">
+                        
+                        <!-- My Role Sub-card -->
+                        <div style="margin-bottom: 32px;">
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">My Role</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                As the HR Business Partner, I partnered closely with leaders, partner managers, and employees to lead key employee experience initiatives:
+                            </p>
+                            <ul class="bullet-list" style="font-size: 0.85rem; padding-left: 0;">
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Employee experience design</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Cultural integration initiatives</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Manager and employee connect programs</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Communication and stakeholder alignment</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 10px;">Recognition and engagement programs</li>
+                                <li style="font-size: 0.9rem; margin-bottom: 0;">Employee wellbeing and belonging</li>
+                            </ul>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--color-border); margin-bottom: 28px;">
+
+                        <!-- Tools & Frameworks Sub-card -->
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--color-navy); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Tools & Frameworks</h3>
+                            <div class="chip-container">
+                                <span class="framework-chip">Employee Connect Frameworks</span>
+                                <span class="framework-chip">15 / 30 / 60-Day Check-ins</span>
+                                <span class="framework-chip">Cross-Cultural Coaching</span>
+                                <span class="framework-chip">Leadership Connect Sessions</span>
+                                <span class="framework-chip">Employee Listening Programs</span>
+                                <span class="framework-chip">Recognition Frameworks</span>
+                                <span class="framework-chip">Wellbeing Initiatives</span>
+                                <span class="framework-chip">Skip-Level Conversations</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Case Study Call To Action Section -->
+    <section class="section text-center" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 64px 0;">
+        <div class="container">
+            <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-muted); display: block; margin-bottom: 12px;">Next Case Study &rarr;</span>
+            <h2 style="font-size: 1.75rem; color: var(--color-navy); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">Developing Better Managers & Hiring Better Talent</h2>
+            <a href="managers-talent.html" class="btn btn-primary">Read Next Story</a>
+        </div>
+    </section>
+
+    <!-- Footer Footer -->
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Kalpana Sharma. Thank you for stopping by.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
