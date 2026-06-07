@@ -1483,3 +1483,60 @@ button:focus-visible,
     color: var(--color-text);
     margin: 0;
 }
+
+/* =====================================================
+   HOMEPAGE FINAL COMPACT SECTIONS
+   ===================================================== */
+
+.philosophy-section {
+    padding: 35px 0 !important;
+}
+
+.quote-card {
+    padding: 28px 36px !important;
+    max-width: 760px !important;
+}
+
+.quote-text {
+    font-size: 1.25rem !important;
+    margin-bottom: 10px !important;
+}
+
+.quote-support {
+    font-size: 1rem !important;
+}
+
+.beyond-section {
+    padding: 45px 0 !important;
+}
+
+.beyond-section .section-title {
+    margin-bottom: 18px !important;
+}
+
+.beyond-section p {
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 24px !important;
+}
+
+.beyond-tags,
+.beyond-grid {
+    margin-top: 20px !important;
+    gap: 14px !important;
+}
+
+.beyond-tags span,
+.beyond-grid span,
+.interest-tag {
+    padding: 10px 20px !important;
+    font-size: 0.95rem !important;
+}
+
+.cta-section {
+    padding: 40px 0 !important;
+}
+
+.cta-card {
+    padding: 45px 30px !important;
+}
