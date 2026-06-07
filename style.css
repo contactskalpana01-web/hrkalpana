@@ -1434,3 +1434,52 @@ button:focus-visible,
     display: block;
     margin-bottom: 12px;
 }
+.philosophy-text .highlight {
+    color: #5b21b6 !important;
+    font-weight: 700 !important;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   HOMEPAGE COMPACT SPACING + QUOTE CARD
+   ===================================================== */
+
+.section {
+    padding: 60px 0 !important;
+}
+
+.metrics-grid,
+.expertise-grid,
+.cases-grid {
+    gap: 20px !important;
+}
+
+.metric-card {
+    min-height: 180px !important;
+    padding: 24px 20px !important;
+}
+
+.quote-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px;
+    border-left: 4px solid var(--color-purple);
+    background-color: var(--color-bg);
+    text-align: left;
+    border-radius: 12px;
+}
+
+.quote-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.quote-support {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0;
+}
