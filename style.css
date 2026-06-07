@@ -1540,3 +1540,14 @@ button:focus-visible,
 .cta-card {
     padding: 45px 30px !important;
 }
+
+/* Hero Journey Chips */
+.chip {
+    padding: 8px 16px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-navy);
+}
